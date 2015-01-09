@@ -5,8 +5,8 @@ const flexStyle = {
   display: 'flex',
   flexWrap: 'nowrap',
   flexGrow: 1,
-  justifyContent: 'space-between',
-  alignContent: 'stretch',
+  justifyContent: 'flex-start',
+  alignContent: 'flex-start',
   alignItems: 'stretch'
 };
 

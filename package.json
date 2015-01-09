@@ -21,5 +21,6 @@
     "react",
     "react-component",
     "flexbox"
-  ]
+  ],
+  "dependencies": {}
 }

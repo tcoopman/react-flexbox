@@ -1,6 +1,6 @@
 var React = require('react');
 
-let flexStyle = {
+const flexStyle = {
   boxSizing: 'border-box',
   display: 'flex',
   flexWrap: 'nowrap',
@@ -11,7 +11,7 @@ let flexStyle = {
 };
 
 
-export const FlexColumn = React.createClass(class {
+class FlexColumn {
   render() {
     let divStyle = {
       flexDirection: 'column'
@@ -31,16 +31,18 @@ export const FlexColumn = React.createClass(class {
       divStyle.height = this.props.height;
     }
 
-    let style = Object.assign(flexStyle, divStyle);
+    const style = Object.assign({}, flexStyle, divStyle);
 
     return (
       <div style={style}>{this.props.children}</div>
     );
   }
-}.prototype);
+}
+// Unfortunatly we need to do this.
+FlexColumn.prototype.displayName = 'FlexColumn';
 
 
-export const FlexRow = React.createClass(class {
+class FlexRow {
   render() {
     let divStyle = {
       flexDirection: 'row'
@@ -53,10 +55,16 @@ export const FlexRow = React.createClass(class {
       divStyle.height = this.props.height;
     }
 
-    let style = Object.assign(flexStyle, divStyle);
+    const style = Object.assign({}, flexStyle, divStyle);
 
     return (
       <div style={style}>{this.props.children}</div>
     );
   }
-}.prototype);
+}
+// Unfortunatly we need to do this.
+FlexRow.prototype.displayName = 'FlexRow';
+
+
+export var FlexColumn = React.createClass(FlexColumn.prototype);
+export var FlexRow = React.createClass(FlexRow.prototype);

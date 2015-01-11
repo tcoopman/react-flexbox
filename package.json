@@ -4,6 +4,9 @@
   "description": "React flexbox implementation",
   "author": "Thomas Coopman @tcoopman",
   "main": "lib/index.jsx",
+  "scripts": {
+    "example": "cd examples; node ../node_modules/webpack-dev-server/bin/webpack-dev-server.js"
+  },
   "peerDependencies": {
     "react": "^0.12.2"
   },
@@ -22,5 +25,12 @@
     "react-component",
     "flexbox"
   ],
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "6to5": "^2.9.4",
+    "6to5-loader": "^2.0.0",
+    "react-hot-loader": "^1.0.7",
+    "webpack": "^1.4.15",
+    "webpack-dev-server": "^1.7.0"
+  }
 }

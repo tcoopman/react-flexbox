@@ -5,6 +5,8 @@ const flexStyle = {
   display: 'flex',
   flexWrap: 'nowrap',
   flexGrow: 1,
+  flexShrink: 0,
+  flexBasis: 0,
   justifyContent: 'space-between',
   alignContent: 'space-between',
   alignItems: 'stretch'
@@ -12,10 +14,20 @@ const flexStyle = {
 
 
 const FlexMixin = {
-  mixProps(style) {
-    const divStyle = Object.assign({}, flexStyle, style);
+  propTypes: {
+    className: React.PropTypes.string,
+    height: React.PropTypes.string,
+    style: React.PropTypes.object,
+    width: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number])
+  },
 
-    if (this.props.width) {
+
+  mixProps(style) {
+    const divStyle = {};
+
+    if (typeof this.props.width === 'number') {
+      divStyle.flexGrow = this.props.width;
+    } else if (this.props.width) {
       divStyle.flexBasis = 'auto';
       divStyle.flexGrow = 0;
       divStyle.flexShrink = 0;
@@ -29,7 +41,11 @@ const FlexMixin = {
       divStyle.height = this.props.height;
     }
 
-    return divStyle;
+    if (this.props.style) {
+      return Object.assign({}, flexStyle, style, divStyle, this.props.style);
+    } else {
+      return Object.assign({}, flexStyle, style, divStyle);
+    }
   }
 };
 

@@ -5,3 +5,7 @@
 .green {
   background: green;
 }
+
+.border {
+  border: 1px solid black;
+}

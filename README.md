@@ -4,6 +4,9 @@ Implementation of css flexbox in react with inline styles.
 
 # API
 
+* Set width and height
+* Set className
+
 ## FlexRow
 
 ## FlexColumn

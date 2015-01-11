@@ -5,17 +5,15 @@ const flexStyle = {
   display: 'flex',
   flexWrap: 'nowrap',
   flexGrow: 1,
-  justifyContent: 'flex-start',
-  alignContent: 'flex-start',
+  justifyContent: 'space-between',
+  alignContent: 'space-between',
   alignItems: 'stretch'
 };
 
 
-class FlexColumn {
-  render() {
-    let divStyle = {
-      flexDirection: 'column'
-    };
+const FlexMixin = {
+  mixProps(style) {
+    const divStyle = Object.assign({}, flexStyle, style);
 
     if (this.props.width) {
       divStyle.flexBasis = 'auto';
@@ -31,40 +29,40 @@ class FlexColumn {
       divStyle.height = this.props.height;
     }
 
-    const style = Object.assign({}, flexStyle, divStyle);
+    return divStyle;
+  }
+};
+
+
+export const FlexColumn = React.createClass({
+  mixins: [FlexMixin],
+
+
+  render() {
+    let divStyle = {
+      flexDirection: 'column'
+    };
+    const style = this.mixProps(divStyle);
 
     return (
-      <div style={style}>{this.props.children}</div>
+      <div className={this.props.className} style={style}>{this.props.children}</div>
     );
   }
-}
-// Unfortunatly we need to do this.
-FlexColumn.prototype.displayName = 'FlexColumn';
+});
 
 
-class FlexRow {
+export const FlexRow = React.createClass({
+  mixins: [FlexMixin],
+
+
   render() {
     let divStyle = {
       flexDirection: 'row'
     };
-
-    if (this.props.height) {
-      divStyle.flexBasis = 'auto';
-      divStyle.flexGrow = 0;
-      divStyle.flexShrink = 0;
-      divStyle.height = this.props.height;
-    }
-
-    const style = Object.assign({}, flexStyle, divStyle);
+    const style = this.mixProps(divStyle);
 
     return (
-      <div style={style}>{this.props.children}</div>
+      <div className={this.props.className} style={style}>{this.props.children}</div>
     );
   }
-}
-// Unfortunatly we need to do this.
-FlexRow.prototype.displayName = 'FlexRow';
-
-
-export var FlexColumn = React.createClass(FlexColumn.prototype);
-export var FlexRow = React.createClass(FlexRow.prototype);
+});

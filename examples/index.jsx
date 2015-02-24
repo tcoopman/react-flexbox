@@ -25,7 +25,7 @@ const HelloWorld = React.createClass({
         </FlexRow>
         <FlexRow style={{alignItems: 'center'}}>
           <FlexColumn width={2}>Twice the size of the others, the width is set without a unit.</FlexColumn>
-          <FlexColumn widht={1}>other 1</FlexColumn>
+          <FlexColumn width={1}>other 1</FlexColumn>
           <FlexColumn width={1}>other 2</FlexColumn>
         </FlexRow>
       </FlexColumn>

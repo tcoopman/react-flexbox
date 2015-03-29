@@ -8,7 +8,7 @@
     "example": "cd examples; node ../node_modules/webpack-dev-server/bin/webpack-dev-server.js"
   },
   "peerDependencies": {
-    "react": "^0.12.2"
+    "react": "^0.13.1"
   },
   "licenses": [
     {

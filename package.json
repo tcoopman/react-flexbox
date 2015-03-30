@@ -3,7 +3,7 @@
   "version": "1.1.0",
   "description": "React flexbox implementation",
   "author": "Thomas Coopman @tcoopman",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "prepublish": "node_modules/babel/bin/babel/index.js src/index.jsx -o lib/index.js",
     "example": "cd examples; node ../node_modules/webpack-dev-server/bin/webpack-dev-server.js"

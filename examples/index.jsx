@@ -1,7 +1,7 @@
-import '6to5/polyfill';
+import 'babel/polyfill';
 import React from 'react';
 
-import {FlexColumn, FlexRow} from '../lib/index.jsx';
+import {FlexColumn, FlexRow} from '../src/index.jsx';
 
 
 const HelloWorld = React.createClass({

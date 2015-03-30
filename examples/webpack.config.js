@@ -23,7 +23,7 @@ module.exports = {
 
   resolve: {
     alias: {
-      'react-flexbox': require.resolve('../lib/index.jsx')
+      'react-flexbox': require.resolve('../src/index.jsx')
     },
     extensions: ['', '.js', '.jsx', '.styl']
   },
@@ -31,7 +31,7 @@ module.exports = {
 
   module: {
     loaders: [
-  {test: /\.jsx$/, loaders: ['react-hot', '6to5-loader'] }
+      {test: /\.jsx$/, loaders: ['react-hot', 'babel-loader'] }
     ]
   },
 

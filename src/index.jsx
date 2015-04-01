@@ -12,73 +12,64 @@ const flexStyle = {
   alignItems: 'stretch'
 };
 
+function mixProps(style, props) {
+  const divStyle = {};
 
-const FlexMixin = {
-  propTypes: {
-    className: React.PropTypes.string,
-    height: React.PropTypes.string,
-    style: React.PropTypes.object,
-    width: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number])
-  },
-
-
-  mixProps(style) {
-    const divStyle = {};
-
-    if (typeof this.props.width === 'number') {
-      divStyle.flexGrow = this.props.width;
-    } else if (this.props.width) {
-      divStyle.flexBasis = 'auto';
-      divStyle.flexGrow = 0;
-      divStyle.flexShrink = 0;
-      divStyle.width = this.props.width;
-    }
-
-    if (this.props.height) {
-      divStyle.flexBasis = 'auto';
-      divStyle.flexGrow = 0;
-      divStyle.flexShrink = 0;
-      divStyle.height = this.props.height;
-    }
-
-    if (this.props.style) {
-      return Object.assign({}, flexStyle, style, divStyle, this.props.style);
-    } else {
-      return Object.assign({}, flexStyle, style, divStyle);
-    }
+  if (typeof props.width === 'number') {
+    divStyle.flexGrow = props.width;
+  } else if (props.width) {
+    divStyle.flexBasis = 'auto';
+    divStyle.flexGrow = 0;
+    divStyle.flexShrink = 0;
+    divStyle.width = props.width;
   }
-};
 
+  if (props.height) {
+    divStyle.flexBasis = 'auto';
+    divStyle.flexGrow = 0;
+    divStyle.flexShrink = 0;
+    divStyle.height = props.height;
+  }
 
-export const FlexColumn = React.createClass({
-  mixins: [FlexMixin],
+  if (props.style) {
+    return Object.assign({}, flexStyle, style, divStyle, props.style);
+  } else {
+    return Object.assign({}, flexStyle, style, divStyle);
+  }
+}
 
+const flexPropTypes = {
+  className: React.PropTypes.string,
+  height: React.PropTypes.string,
+  style: React.PropTypes.object,
+  width: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number])
+}
 
+export class FlexColumn extends React.Component {
   render() {
-    let divStyle = {
+    const divStyle = {
       flexDirection: 'column'
     };
-    const style = this.mixProps(divStyle);
+    const style = mixProps(divStyle, this.props);
 
     return (
       <div className={this.props.className} style={style}>{this.props.children}</div>
     );
+
   }
-});
+}
+FlexColumn.proptypes = flexPropTypes;
 
-
-export const FlexRow = React.createClass({
-  mixins: [FlexMixin],
-
-
+export class FlexRow extends React.Component {
   render() {
-    let divStyle = {
+    const divStyle = {
       flexDirection: 'row'
     };
-    const style = this.mixProps(divStyle);
+    const style = mixProps(divStyle, this.props);
 
     return (
       <div className={this.props.className} style={style}>{this.props.children}</div>
     );
   }
-});
+}
+FlexRow.proptypes = flexPropTypes;

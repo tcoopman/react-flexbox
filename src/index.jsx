@@ -66,6 +66,6 @@ export default class View extends React.Component {
     if (this.props.auto) {
       style.flex = '0 0 auto';
     }
-    return <div className={this.props.className} style={style}>{this.props.children}</div>
+    return <div {...this.props} style={style}>{this.props.children}</div>;
   }
 }

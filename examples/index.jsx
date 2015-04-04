@@ -7,7 +7,7 @@ import View from '../src/index.jsx';
 const HelloWorld = React.createClass({
   render() {
     return (
-      <FlexColumn className="border" height="100vh">
+      <View column className="border" height="70vh">
         <FlexRow height="50px" style={{alignItems: 'center', alignSelf: 'center'}}>Fully centered header</FlexRow>
         <FlexRow className="red">
           <FlexColumn className="border">Column 1</FlexColumn>
@@ -46,7 +46,7 @@ const HelloWorld = React.createClass({
           </View>
           <View className="green">De rest</View>
         </View>
-      </FlexColumn>
+      </View>
     );
   }
 });

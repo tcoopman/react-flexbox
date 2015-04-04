@@ -8,34 +8,81 @@ it I can add a transpiled version to the repo.
 
 ## Components
 
-### FlexRow
+### View
 
-A flex row
+A flex view element that can be used instead of `FlexRow` or `FlexColumn`
 
-### FlexColumn
+This is default import.
 
-A flex column
+Some simple examples:
 
-## Props
+```js
+<View row>
+  <View auto row>
+    <View column width="100px"><View className="red">Left</View></View>
+    <View column width="100px"><View className="red">Left</View></View>
+  </View>
+  <View row className="green">All the place in the world</View>
+</View>
+```
+
+```js
+<View column height="200px">
+  <View column auto>
+    <View className="green" height="20px">Green</View>
+    <View className="red" height="20px">Red</View>
+  </View>
+  <View className="green">De rest</View>
+</View>
+```
+
+### Props
 
 All props are optional and can be set on both components.
 
-### className
+#### row
+
+boolean, sets the flexDirection to row
+
+#### column
+
+boolean, sets the flexDirection to column
+
+#### auto
+
+boolean, sets flex to '0 0 auto'
+
+#### className
 
 must be a string
 
-### height
+#### height
 
 _height_ must be a string with a valid css unit.
 
-### style
+#### style
 
 Will be merged the flex style. This allows you to override the style.
 
-### width
+#### width
 
 _width_ can be either a number `width={2}`, this acts as _flex-grow_ or a string
 with a unit (for example _%_ or _px_) - it must be a valid css unit.
+
+### FlexRow
+
+*deprecated*
+
+A flex row.
+This is a `View` with prop `row`
+
+### FlexColumn
+
+*deprecated*
+
+A flex column
+This is a `View` with prop `column`
+
 
 # Examples
 

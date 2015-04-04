@@ -4,9 +4,7 @@ const flexStyle = {
   boxSizing: 'border-box',
   display: 'flex',
   flexWrap: 'nowrap',
-  flexGrow: 1,
-  flexShrink: 0,
-  flexBasis: 0,
+  flex: '1 0 auto',
   justifyContent: 'space-between',
   alignContent: 'space-between',
   alignItems: 'stretch'
@@ -14,6 +12,12 @@ const flexStyle = {
 
 function mixProps(style, props) {
   const divStyle = {};
+
+  if (props.row) {
+    divStyle.flexDirection = 'row';
+  } else if (props.column) {
+    divStyle.flexDirection = 'column';
+  }
 
   if (typeof props.width === 'number') {
     divStyle.flexGrow = props.width;
@@ -38,38 +42,30 @@ function mixProps(style, props) {
   }
 }
 
-const flexPropTypes = {
-  className: React.PropTypes.string,
-  height: React.PropTypes.string,
-  style: React.PropTypes.object,
-  width: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number])
-}
-
 export class FlexColumn extends React.Component {
   render() {
-    const divStyle = {
-      flexDirection: 'column'
-    };
-    const style = mixProps(divStyle, this.props);
-
+    console.warn('FlexColumn is deprecated. Please use <View column> instead');
     return (
-      <div className={this.props.className} style={style}>{this.props.children}</div>
+      <View column {...this.props}>{this.props.children}</View>
     );
-
   }
 }
-FlexColumn.proptypes = flexPropTypes;
 
 export class FlexRow extends React.Component {
   render() {
-    const divStyle = {
-      flexDirection: 'row'
-    };
-    const style = mixProps(divStyle, this.props);
-
+    console.warn('FlexRow is deprecated. Please use <View row> instead');
     return (
-      <div className={this.props.className} style={style}>{this.props.children}</div>
+      <View row {...this.props}>{this.props.children}</View>
     );
   }
 }
-FlexRow.proptypes = flexPropTypes;
+
+export default class View extends React.Component {
+  render() {
+    const style = mixProps({}, this.props);
+    if (this.props.auto) {
+      style.flex = '0 0 auto';
+    }
+    return <div className={this.props.className} style={style}>{this.props.children}</div>
+  }
+}

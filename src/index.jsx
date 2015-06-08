@@ -42,24 +42,6 @@ function mixProps(style, props) {
   }
 }
 
-export class FlexColumn extends React.Component {
-  render() {
-    console.warn('FlexColumn is deprecated. Please use <View column> instead');
-    return (
-      <View column {...this.props}>{this.props.children}</View>
-    );
-  }
-}
-
-export class FlexRow extends React.Component {
-  render() {
-    console.warn('FlexRow is deprecated. Please use <View row> instead');
-    return (
-      <View row {...this.props}>{this.props.children}</View>
-    );
-  }
-}
-
 export default class View extends React.Component {
   render() {
     const style = mixProps({}, this.props);

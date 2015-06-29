@@ -1,4 +1,4 @@
-var React = require('react');
+import React from 'react';
 
 const flexStyle = {
   boxSizing: 'border-box',
@@ -36,18 +36,20 @@ function mixProps(style, props) {
   }
 
   if (props.style) {
-    return Object.assign({}, flexStyle, style, divStyle, props.style);
+    return {...flexStyle, ...style, ...divStyle, ...props.style};
   } else {
-    return Object.assign({}, flexStyle, style, divStyle);
+    return {...flexStyle, ...style, ...divStyle};
   }
 }
 
 export default class View extends React.Component {
   render() {
+    console.log('react render');
     const style = mixProps({}, this.props);
     if (this.props.auto) {
       style.flex = '0 0 auto';
     }
+    console.log('before');
     return <div {...this.props} style={style}>{this.props.children}</div>;
   }
 }

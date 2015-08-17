@@ -44,12 +44,10 @@ function mixProps(style, props) {
 
 export default class View extends React.Component {
   render() {
-    console.log('react render');
     const style = mixProps({}, this.props);
     if (this.props.auto) {
       style.flex = '0 0 auto';
     }
-    console.log('before');
     return <div {...this.props} style={style}>{this.props.children}</div>;
   }
 }

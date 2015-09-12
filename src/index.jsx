@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
 const flexStyle = {
   boxSizing: 'border-box',
@@ -10,7 +10,7 @@ const flexStyle = {
   alignItems: 'stretch'
 };
 
-function mixProps(style, props) {
+let mixProps = (style, props) => {
   const divStyle = {};
 
   if (props.row) {
@@ -42,7 +42,18 @@ function mixProps(style, props) {
   }
 }
 
-export default class View extends React.Component {
+export default class View extends Component {
+
+  static propTypes = {
+    row: PropTypes.bool,
+    column: PropTypes.bool,
+    auto: PropTypes.bool,
+    className: PropTypes.string,
+    height: PropTypes.string,
+    style: PropTypes.object,
+    width: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+  }
+
   render() {
     const style = mixProps({}, this.props);
     if (this.props.auto) {

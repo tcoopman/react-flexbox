@@ -10,7 +10,7 @@ const flexStyle = {
   alignItems: 'stretch'
 };
 
-let mixProps = (style, props) => {
+const mixProps = (style, props) => {
   const divStyle = {};
 
   if (props.row) {

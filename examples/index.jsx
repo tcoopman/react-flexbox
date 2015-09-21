@@ -1,5 +1,6 @@
 import 'babel/polyfill';
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import {FlexColumn, FlexRow} from '../src/index.jsx';
 import View from '../src/index.jsx';
@@ -36,4 +37,4 @@ class HelloWorld extends React.Component {
   }
 }
 
-React.render(<HelloWorld />, document.body);
+ReactDOM.render(<HelloWorld />, document.getElementById('app'));

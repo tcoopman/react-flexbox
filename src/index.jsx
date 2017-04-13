@@ -59,6 +59,14 @@ export default class View extends Component {
     if (this.props.auto) {
       style.flex = '0 0 auto';
     }
-    return <div {...this.props} style={style}>{this.props.children}</div>;
+
+    // strip props that are invalid to set on a div.
+    // (prevents https://fb.me/react-unknown-prop)
+    let {
+      row, column, auto,
+      ...divProps
+    } = this.props;
+
+    return <div {...divProps} style={style}>{this.props.children}</div>;
   }
 }

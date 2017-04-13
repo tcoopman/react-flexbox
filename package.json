@@ -1,6 +1,6 @@
 {
   "name": "react-flexbox",
-  "version": "3.0.0",
+  "version": "3.1.1",
   "description": "React flexbox implementation",
   "author": "Thomas Coopman @tcoopman",
   "main": "lib/index.js",
@@ -41,5 +41,12 @@
     "react-dom": "^0.14.0-rc1",
     "webpack": "^1.12.0",
     "webpack-dev-server": "^1.10.1"
+<<<<<<< HEAD
+=======
+  },
+  "peerDependencies": {
+    "react": "^0.14.0 || ^15.0.0",
+    "react-dom": "^0.14.0 || ^15.0.0"
+>>>>>>> tcoopman/master
   }
 }

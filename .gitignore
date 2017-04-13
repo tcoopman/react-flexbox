@@ -1,3 +1,9 @@
+# Mac OSX Files
+.DS_Store
+
+# General Files
 node_modules
-examples/dist
 npm-debug.log
+yarn.lock
+examples/dist
+dist

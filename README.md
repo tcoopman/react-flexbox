@@ -6,6 +6,27 @@ it I can add a transpiled version to the repo.
 
 # API
 
+## Install
+```
+npm install react-flexbox --save
+yarn add react-flexbox
+```
+```js
+const View = require('react-flexbox')
+// or
+import View from 'react-flexbox'
+```
+
+## UMD
+Module exposed as `ReactFlexbox`
+
+```
+<script src="https://unpkg.com/react-flexbox/dist/react-flexbox.js"></scrip>
+```
+```js
+const View = ReactFlexbox.default
+```
+
 ## Components
 
 ### View

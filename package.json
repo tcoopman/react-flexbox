@@ -1,6 +1,6 @@
 {
   "name": "react-flexbox",
-  "version": "3.1.3",
+  "version": "3.1.4",
   "description": "React flexbox implementation",
   "author": "Thomas Coopman @tcoopman",
   "main": "lib/index.js",
